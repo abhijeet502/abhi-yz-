@@ -1,1 +1,201 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Love Story ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+    background:linear-gradient(135deg,#2b0040,#4b0066,#240033);
+    color:white;
+    overflow:hidden;
+}
 
+.page{
+    min-height:100vh;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+}
+.page.active{display:flex;animation:fade .8s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+
+button{
+    margin-top:30px;
+    padding:14px 42px;
+    border:none;
+    border-radius:40px;
+    background:#ff78c6;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    box-shadow:0 0 30px #ff4fb8;
+}
+
+.heart{
+    position:fixed;
+    color:#ff78c6;
+    animation:float 10s linear infinite;
+    opacity:.7;
+    z-index:0;
+}
+@keyframes float{
+    0%{transform:translateY(100vh) scale(.3);} 
+    100%{transform:translateY(-10vh) scale(1.2);} 
+}
+
+.card{
+    width:280px;
+    padding:25px;
+    border-radius:22px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 25px 50px rgba(0,0,0,.5);
+}
+
+/* LETTER */
+.letter-box{
+    max-width:760px;
+    background:rgba(255,255,255,0.1);
+    padding:40px;
+    border-radius:35px;
+    box-shadow:0 0 60px rgba(255,120,198,.8);
+}
+
+.typing{
+    font-size:20px;
+    line-height:2;
+    color:#ffd6f1;
+}
+.cursor{
+    display:inline-block;
+    width:8px;
+    height:22px;
+    background:#ffd6f1;
+    margin-left:4px;
+    animation:blink 1s infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+
+input{
+    padding:14px;
+    border-radius:12px;
+    border:none;
+    margin-top:15px;
+    font-size:18px;
+    text-align:center;
+}
+
+.photos img{
+    width:220px;
+    border-radius:24px;
+    margin:14px;
+    box-shadow:0 0 35px pink;
+}
+.caption{
+    margin-bottom:18px;
+    color:#ffd6f1;
+    font-style:italic;
+}
+
+.footer{
+    margin-top:40px;
+    font-family:'Great Vibes',cursive;
+    font-size:34px;
+    color:#ff9de2;
+}
+</style></head>
+<body><!-- PAGE 1 --><div class="page active" id="p1">
+    <h1>💖 Best Timeline Of My Life 💖</h1>
+    <p style="color:#ffd6f1;">❤️ Our Love Story ❤️</p><div style="display:flex;gap:25px;flex-wrap:wrap;justify-content:center;margin-top:40px;">
+    <div class="card">🌟 <b>First Meet Up</b><br>8 January 2025<br><br>The moment my world changed forever.</div>
+    <div class="card">💍 <b>Proposal Date</b><br>27 January 2025<br><br>The start of our beautiful journey.</div>
+    <div class="card">💋 <b>First Kiss</b><br>Puch ke batayenge 😅<br><br>A magical moment.</div>
+    <div class="card">❤️ <b>I Love You</b><br>Forever<br><br>Till my last breath.</div>
+</div>
+
+<button onclick="next(2)">Next ➜</button>
+
+</div><!-- PAGE 2 LETTER --><div class="page" id="p2">
+    <h1>💌 A Letter From My Heart 💌</h1><div class="letter-box">
+    <div class="typing" id="letter"></div><span class="cursor"></span>
+</div>
+
+<button onclick="next(3)">Next ➜</button>
+
+</div><!-- PAGE 3 --><div class="page" id="p3">
+    <h1>🔒 Our Private Memories 🔒</h1>
+    <p style="color:#ffd6f1;">Only for us 💖</p><input type="password" id="pass" placeholder="Enter password">
+<button onclick="unlock()">Unlock 💗</button>
+
+<div class="photos" id="photos" style="display:none;">
+    <h2 style="margin:25px 0;">📸 Our Beautiful Moments</h2>
+
+    <img src="photo1.jpg"><div class="caption">Every picture holds a thousand memories 💕</div>
+    <img src="photo2.jpg"><div class="caption">Smiles that made my heart feel home 🫶</div>
+    <img src="photo3.jpg"><div class="caption">Moments I wish to relive forever ✨</div>
+    <img src="photo4.jpg"><div class="caption">You + Me = Everything ❤️</div>
+    <img src="photo5.jpg"><div class="caption">Still my favorite story 💖</div>
+
+    <button onclick="next(4)">Next ➜</button>
+</div>
+
+</div><!-- PAGE 4 --><div class="page" id="p4">
+    <h1>💞 Our Memory Quiz 💞</h1>
+    <p style="margin-top:15px;font-size:22px;">When did we propose?</p><button onclick="correct()">💍 27 January 2025</button>
+<button onclick="wrong()">😅 14 February</button>
+
+<p id="quizmsg" style="margin-top:20px;color:#ffd6f1;font-size:20px;"></p>
+
+<button onclick="next(5)">Next ➜</button>
+
+</div><!-- PAGE 5 --><div class="page" id="p5">
+    <h1>💖 Forever & Always 💖</h1><p style="font-size:22px;color:#ffd6f1;margin-top:20px;">
+    No matter where life takes us…<br>
+    No matter how hard the days become…<br><br>
+    I will still choose you.<br>
+    Every day. Every lifetime. ❤️
+</p>
+
+<div class="footer">Crafted with 💖 by Abhii</div>
+
+</div><script>
+for(let i=0;i<45;i++){
+ let h=document.createElement('div');
+ h.className='heart';
+ h.innerHTML='❤️';
+ h.style.left=Math.random()*100+'vw';
+ h.style.fontSize=(12+Math.random()*26)+'px';
+ h.style.animationDuration=(6+Math.random()*6)+'s';
+ document.body.appendChild(h);
+}
+
+function next(n){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById('p'+n).classList.add('active');
+}
+
+const letterText = `First meet up – 8 January 2025 ❤️\n\nThe moment my world changed forever. From that day everything felt different — brighter, warmer and more meaningful.\n\nProposal date – 27 January 2025 💍\nThe day our hearts officially became one and our beautiful journey truly began.\n\nFirst kiss – Puch ke batayenge 😅\nA magical moment filled with nervous smiles, racing hearts and pure love.\n\nI love you — till my last breath ❤️\nNot for a moment. Not for a phase. But for a lifetime… and beyond.`;
+
+let i=0;
+setInterval(()=>{
+ if(i < letterText.length){
+  document.getElementById('letter').innerHTML += letterText.charAt(i).replace("\n","<br>");
+  i++;
+ }
+},38);
+
+function unlock(){
+ if(document.getElementById('pass').value === '27012025'){
+  document.getElementById('photos').style.display='block';
+ } else alert('Wrong password 💔');
+}
+
+function correct(){document.getElementById('quizmsg').innerText='Perfect 😍 You remember everything!';}
+function wrong(){document.getElementById('quizmsg').innerText='No problem… at least we are together ❤️';}
+</script></body>
+</html>
